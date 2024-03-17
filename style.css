@@ -128,6 +128,7 @@ h6 {
     margin-left: 5dvb;
 }
 
+
 .sec2 {
     margin-top: 80px;
     display: flex;
@@ -428,6 +429,11 @@ video {
 
 
 }
+/* @media screen and (max-width: 1000px) {
+    .social-media .social-media-posts img,
+    video {object-fit: contain;}
+} */
+
 
 .social-media .social-media-posts img:hover,
 .social-media-posts video:hover {
