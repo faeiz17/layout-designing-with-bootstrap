@@ -1,14 +1,44 @@
-function openNav() {
-  document.getElementById("side-menu").style.width = "200px";
-}
-let x = document.getElementById("close");
-x.onclick = closeNav;
-function closeNav() {
-  if (x) {
-    document.getElementById("side-menu").style.width = "0px";
-  }
-}
 
+$(document).ready(function () {
+  function closeNav(){
+    $('#side-menu').fadeOut(500)
+    $('section').css('filter', 'blur(0px)');
+
+  }
+  function openNav(){
+    $('#side-menu').show();
+    $('section').css('filter', 'blur(5px)');
+  }
+  $('#close').click(function (e) { 
+    e.preventDefault();
+    closeNav();
+    
+  });
+  
+    // $("video").hover(
+    //   function() {
+    //     this.play();
+    //   }, 
+    //   function() {
+    //     this.pause();
+    //     this.currentTime = 0;
+    //   }
+    // );
+  
+  $('#user').click(function (e) { 
+    e.preventDefault();
+    openNav();
+    
+  });
+ 
+});
+
+
+
+document.getElementById("loginButton").onclick = function() {
+  window.location.href ="login.html";
+
+}
 function videofullerscreen(getElementById) {
    let videofullscreen = document.getElementById(getElementById);
    
@@ -68,3 +98,20 @@ function carousel() {
   if (slideIndex > x.length) {slideIndex = 1}
   x[slideIndex-1].style.display = "block";
   setTimeout(carousel, 1500);}
+
+  //video-scrubbing
+const section = document.querySelector('section.vid')
+const vid = document.querySelector('video.vid-scrub')
+vid.pause()
+const scroll =()=>{
+  const distance = window.scrollY- section.offsetTop
+  const total = section.clientHeight - window.innerHeight
+  let percentage = distance / total
+  percentage = Math.max(0,percentage)
+  percentage = Math.min(percentage,1)
+  if(vid.duration>0){
+    vid.currentTime= vid.duration * percentage
+  }
+
+}
+window.addEventListener('scroll',scroll)
